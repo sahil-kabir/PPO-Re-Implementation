@@ -3,6 +3,8 @@ import torch
 from torch import nn
 from torch.distributions import Categorical
 import gymnasium as gym
+import pandas as pd
+import plotly.express as px
 
 class FFNetwork(nn.Module):
     def __init__(self, in_dim, out_dim):
@@ -134,4 +136,8 @@ def train_ppo(env_name="CartPole-v1", render="human", iterations=200, steps_per_
     return actor, avg_rewards
 
 if __name__ == '__main__':
-  actor, avg_rewards = train_ppo(render=None)
+    actor, avg_rewards = train_ppo(render=None)
+    df = pd.DataFrame({'Iteration': range(1, len(avg_rewards) + 1), 'Score': avg_rewards})
+    fig = px.line(df, x='Iteration', y='Score', title='Score per Iteration', markers=True)
+    fig.show()
+    
