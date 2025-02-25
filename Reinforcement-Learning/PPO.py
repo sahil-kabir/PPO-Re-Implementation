@@ -122,10 +122,7 @@ def train_ppo(env_name="CartPole-v1", render="human", iterations=200, steps_per_
               states, advantages, actions, rewards, old_logodds,
               clip_ratio=clip_ratio,
               epochs=k_epochs,
-              batch_size=batch_size,
-              gamma=gamma,
-              lbda=lbda,
-              device=device)
+              batch_size=batch_size)
         s = validate(env, actor)
         avg_rewards.append(s)
         print(f"Iteration {i} complete. score: {s}")
