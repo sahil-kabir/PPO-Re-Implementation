@@ -49,7 +49,7 @@ def create_trajectories(env, actor, timesteps):
     return np.array(states), np.array(actions), np.array(logodds), np.array(rewards), np.array(state_terminal_indicator)
 
 def validate(env, actor):
-    seeds = [0, 42, 200, 1000, 9999]
+    seeds = [3, 17, 42, 8, 29, 567, 91, 1400, 67, 23, 888, 5, 37, 72, 59990]
     score = 0
     for seed in seeds:
         obs, _ = env.reset(seed=seed)
