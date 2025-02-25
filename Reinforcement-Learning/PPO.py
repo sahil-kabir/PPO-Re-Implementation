@@ -52,12 +52,12 @@ def validate(env, actor):
     seeds = [0, 42, 200, 1000, 9999]
     score = 0
     for seed in seeds:
-        obs, _ = env.reset(seed=42)
+        obs, _ = env.reset(seed=seed)
         terminated = False
         while not terminated:
             obs, reward, terminated, _, _ = env.step(actor(obs).argmax().item())
             score += reward
-    return score/5
+    return score/len(seeds)
 
 def GAE(critic, states, starts, rewards, gamma=0.99, lbda=0.95):
     timesteps = len(states)
